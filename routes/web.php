@@ -36,3 +36,7 @@ Route::resource('posts',PostsController::class); //it connected all our route tp
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::post('/posts/create', [App\Http\Controllers\PostsController::class, 'store'])->name('store');
+// Route::post('/posts/create1', [App\Http\Controllers\PostsController::class, 'Str'])->name('create');
+Route::delete('/posts/{id}', [App\Http\Controllers\PostsController::class, 'destroy'])->name('destroy');

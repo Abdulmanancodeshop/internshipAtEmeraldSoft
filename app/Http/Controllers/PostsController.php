@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use DB;
 
 class PostsController extends Controller
 {
@@ -16,6 +17,7 @@ class PostsController extends Controller
     {
         // $posts =  Post::all();
         $posts =  Post::orderBy('id','asc')->get();
+        // $posts =  Post::orderBy('id','asc')->paginate(1);
         return view('posts.index')->with('posts',$posts);
     }
 
@@ -26,7 +28,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts/create');
     }
 
     /**
@@ -37,7 +39,16 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+        $post1 = new Post;
+ 
+         $post1->title = $request['title'];
+         $post1->body =  $request['body'];
+
+         $post1->save();
+
+return $request->body;
+         //return view('posts.create');
     }
 
     /**
@@ -83,6 +94,10 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+       // DB::delete('delete from posts where by id = ? ', 1);
+      Post::where('id',$id)->delete();
+      $post = Post::all();
+     // return view('posts.show')->with('post',$post);
+      return $post;
     }
 }

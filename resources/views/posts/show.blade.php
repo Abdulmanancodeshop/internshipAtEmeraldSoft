@@ -6,5 +6,7 @@
     {{$post->body}}
 </div>
 <small>Written on{{$post->created_at}}</small>
+<br>
+<button class='btn btn-danger'>Delete Post</button>
     
 @endsection
