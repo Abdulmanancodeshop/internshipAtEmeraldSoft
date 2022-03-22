@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1 class='text-center'>Create Posts</h1>
+<h1 class='text-center'>Edit Posts</h1>
 {{-- {!! Form::open(['action' => 'PostsController@store','method'=>'POST']) !!}
     <div class='form-group'>
         {{Form::label('title','Title')}}
@@ -9,18 +9,18 @@
     </div>
 {!! Form::close() !!} --}}
 
-<form class="text-center" action="javascript:void(0);">
+<form class="text-center" action="javascript:void(0); " method ='POST'>
 
 
 <label for="title" id="title1" name="title1" >Title</label>
-<input type="text" name="title" id="title" />
+<input type="text" name="title" id="title" value="{{$post->title}}" />
 <br>
 <br>
 <label for="body" id="body" name="body" >Body</label>
 {{-- <input type="text-area" name="text1" id="text1" /> --}}
-<textarea name="body" id="body1" cols="30" rows="5"></textarea>
+<textarea name="body" id="body1" cols="30" rows="5" >{{$post->body}}</textarea>
 <br>
-<button onclick="createp();" class='btn btn-primary'>Submit</button>
+<button id={{$post->id}} onclick="createp(this.id);" class='btn btn-primary'>Submit</button>
 </form>
 
 
@@ -29,11 +29,16 @@
 
 <script>
 
-function createp() 
+function createp(idd) 
     {
         debugger;
+        var getId = idd;
 
-        axios.post("{{route('store')}}",{
+        var route = "{{route('edit',":getId")}}";
+
+        route = route.replace(':getId',getId);
+        
+        axios.post(route,{
             title: 
             document.getElementById('title').value,
             body: document.getElementById('body1').value

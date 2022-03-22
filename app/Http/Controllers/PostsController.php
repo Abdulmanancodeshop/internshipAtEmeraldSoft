@@ -46,8 +46,7 @@ class PostsController extends Controller
          $post1->body =  $request['body'];
 
          $post1->save();
-
-return $request->body;
+         return $request->body;
          //return view('posts.create');
     }
 
@@ -71,7 +70,10 @@ return $request->body;
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+      
+       return view('posts.edit')->with('post',$post);
+       
     }
 
     /**
@@ -83,7 +85,13 @@ return $request->body;
      */
     public function update(Request $request, $id)
     {
-        //
+        $post1 = Post::find($id);
+ 
+         $post1->title = $request['title'];
+         $post1->body =  $request['body'];
+
+         $post1->save();
+         return $request->body;
     }
 
     /**

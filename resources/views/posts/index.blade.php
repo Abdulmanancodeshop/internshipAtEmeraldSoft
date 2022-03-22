@@ -16,7 +16,7 @@
     <p>No posts yet</p>    
 @endif
     </div>
-<a href="{{route('store')}}"><button >Create Post</button></a>
+{{-- <a href="{{route('store')}}"><button >Create Post</button></a> --}}
 @endsection
 
 
