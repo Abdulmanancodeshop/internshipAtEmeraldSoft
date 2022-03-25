@@ -38,12 +38,13 @@ function createp()
             document.getElementById('title').value,
             body: document.getElementById('body1').value
         }).then(response => {
-            debugger;
+            // debugger;
+            console.log(response);
         })
         .catch(error => {
 //    alert("error");
 console.log(error);
-debugger;
+// debugger;
         })
         
     }

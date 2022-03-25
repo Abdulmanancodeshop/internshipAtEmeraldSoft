@@ -46,4 +46,4 @@ Route::post('/posts/{id}/edit', [App\Http\Controllers\PostsController::class, 'e
 Route::post('/posts/{id}/edit', [App\Http\Controllers\PostsController::class, 'update'])->name('edit');
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
